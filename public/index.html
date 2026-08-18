@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RouterWatch</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Router-aware network manager</p>
+          <h1>RouterWatch</h1>
+          <p class="lede">Find devices on your network, identify your router, and apply safe controls when your router supports them.</p>
+        </div>
+        <div class="hero-actions">
+          <button id="detectBtn" class="primary">Detect Router</button>
+          <button id="scanBtn" class="secondary">Scan Devices</button>
+        </div>
+      </section>
+
+      <section class="status-grid">
+        <article class="status-card">
+          <span>Router</span>
+          <strong id="routerName">Not detected</strong>
+          <small id="routerReason">Run detection to identify the gateway.</small>
+        </article>
+        <article class="status-card">
+          <span>Gateway</span>
+          <strong id="gateway">-</strong>
+          <small id="localAddress">Local address: -</small>
+        </article>
+        <article class="status-card">
+          <span>Capabilities</span>
+          <strong id="capabilities">Scan only</strong>
+          <small id="capabilityHint">Controls adjust by router type.</small>
+        </article>
+      </section>
+
+      <section class="layout">
+        <aside class="panel">
+          <h2>Router Connection</h2>
+          <p class="muted">Use this when you have a supported management router after Starlink, such as MikroTik or OpenWrt.</p>
+          <form id="routerForm" class="form">
+            <label>
+              Router type
+              <select name="type">
+                <option value="mikrotik">MikroTik RouterOS</option>
+                <option value="openwrt">OpenWrt</option>
+                <option value="tplink">TP-Link</option>
+                <option value="starlink">Starlink router</option>
+              </select>
+            </label>
+            <label>
+              Host
+              <input name="host" placeholder="192.168.88.1">
+            </label>
+            <label>
+              Username
+              <input name="username" autocomplete="username">
+            </label>
+            <label>
+              Password
+              <input name="password" type="password" autocomplete="current-password">
+            </label>
+            <button class="primary" type="submit">Connect</button>
+          </form>
+          <div id="connectionResult" class="notice"></div>
+        </aside>
+
+        <section class="panel devices-panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Connected Devices</h2>
+              <p id="scanMeta" class="muted">No scan yet.</p>
+            </div>
+            <input id="deviceSearch" class="search" placeholder="Search device, IP, MAC, vendor">
+          </div>
+          <div id="deviceList" class="device-list empty">Run a scan to see connected devices.</div>
+        </section>
+      </section>
+    </main>
+
+    <template id="deviceTemplate">
+      <article class="device">
+        <div class="device-main">
+          <div class="device-icon">?</div>
+          <div>
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+        <div class="device-badges"></div>
+        <div class="device-actions">
+          <button data-action="trust" class="secondary">Trust</button>
+          <button data-action="slow" class="secondary">Slow</button>
+          <button data-action="block" class="danger">Block</button>
+          <button data-action="restore" class="secondary">Restore</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

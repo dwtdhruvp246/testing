@@ -1,0 +1,12 @@
+{
+  "name": "routerwatch",
+  "version": "0.1.0",
+  "description": "Router-aware home network manager for discovering devices and applying safe router controls.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
