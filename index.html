@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RouterWatch</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <main class="shell">
@@ -42,6 +42,7 @@
         <aside class="panel">
           <h2>Router Connection</h2>
           <p class="muted">Use this when you have a supported management router after Starlink, such as MikroTik or OpenWrt.</p>
+          <p id="hostingMode" class="hosting-mode" hidden></p>
           <form id="routerForm" class="form">
             <label>
               Router type
@@ -93,14 +94,16 @@
         </div>
         <div class="device-badges"></div>
         <div class="device-actions">
+          <button data-action="details" class="secondary">Details</button>
           <button data-action="trust" class="secondary">Trust</button>
           <button data-action="slow" class="secondary">Slow</button>
           <button data-action="block" class="danger">Block</button>
           <button data-action="restore" class="secondary">Restore</button>
         </div>
+        <div class="device-details" hidden></div>
       </article>
     </template>
 
-    <script src="/app.js" type="module"></script>
+    <script src="./app.js" type="module"></script>
   </body>
 </html>

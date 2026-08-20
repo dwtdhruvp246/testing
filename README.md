@@ -39,6 +39,48 @@ Open:
 http://localhost:3000
 ```
 
+## GitHub Pages hosting
+
+GitHub Pages can host the dashboard UI, but it cannot scan your private WiFi or
+log in to a router by itself because it only serves static browser files.
+
+For the easiest GitHub Pages setup, keep these files in the repository root:
+
+```text
+index.html
+styles.css
+app.js
+```
+
+Then in GitHub, use:
+
+```text
+Settings -> Pages -> Deploy from a branch -> main -> /root
+```
+
+The page uses relative asset paths, so it works from repository URLs such as:
+
+```text
+https://yourname.github.io/routerwatch/
+```
+
+The same files are also kept in `public/` because the local Node backend serves
+that folder when you run `npm start`.
+
+When opened from GitHub Pages, RouterWatch shows a clickable static preview and
+setup guidance. For live detection, device scanning, slowing, and blocking, run
+the Node backend on a computer connected to the same WiFi:
+
+```bash
+npm start
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
 ## Next build steps
 
 1. Finish MikroTik restore automation by deleting matching queues/firewall list
